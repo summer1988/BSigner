@@ -1,15 +1,33 @@
-import time, string, requests, itertools, os
+import time, string, itertools, os
 
 from urllib.parse import urlencode
 from utils.api import *
+
+try:
+    import requests, colorama
+except ImportError as e:
+    input(f"[*] Package {e} is not installed")
+    sys.exit(f"[*] Please install {e} and execute the script again")
 
 class signerr:
     def __init__(self, proxy: str or None = None, count: int = 4) -> None:
         self.proxies  = {'http': f'http://{proxy}', 'https': f'http://{proxy}'} if proxy else None
         self.accounts = []
+        self.magenta = colorama.Fore.MAGENTA
         self.keywords = get_keywords(count)
         os.system("cls" if os.name == "nt" else "clear")
-        
+        print(
+            f"""{self.magenta}
+    
+    █████████████████████▀█████████████████████
+    █▄─▄─▀█─▄▄▄▄█▄─▄█─▄▄▄▄█▄─▀█▄─▄█▄─▄▄─█▄─▄▄▀█
+    ██─▄─▀█▄▄▄▄─██─██─██▄─██─█▄▀─███─▄█▀██─▄─▄█
+    ▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀▄▄▀▄▄▀
+            Bernward © 2022 | dawho?#8991\n""",
+            "__________" * 10,
+            "\n\n",
+        )
+
     def __base_params(self, keyword: str, cursor: int = 0) -> str:
         __to_encode = {
             "count"             : 30,
