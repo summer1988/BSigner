@@ -1,5 +1,5 @@
 # BSigner
-A simple program that can generated a signed encryption key for TikTok API's authentication 
+A simple program that can generate a signed encryption key for TikTok API's authentication 
 
 ## Installation
 
